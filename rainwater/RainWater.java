@@ -15,7 +15,7 @@ public class RainWater {
             current++;
         }
         while (maximumHeightIndex < height.length - 2) {
-            current = maximumHeightIndex ;
+            current = maximumHeightIndex;
             maximumHeightIndex = maximumHeight(height, maximumHeightIndex + 1, height.length - 1);
             maximumPrevious = 0;
             while (current < maximumHeightIndex) {
@@ -26,6 +26,29 @@ public class RainWater {
             }
         }
         return total;
+    }
+
+    public int trapWithPointers(int[] height) {
+        int res = 0, l = 0, r = height.length - 1, maxLft = 0, maxRt = 0, diff = 0;
+        while (l < r) {
+            if (height[l] > maxLft)
+                maxLft = height[l];
+            if (height[r] > maxRt)
+                maxRt = height[r];
+            if (height[l] <= height[r]) {
+                l++;
+                diff = maxLft - height[l];
+                if (diff > 0)
+                    res += diff;
+            } else {
+                r--;
+                diff = maxRt - height[r];
+                if (diff > 0)
+                    res += diff;
+            }
+
+        }
+        return res;
     }
 
     private int maximumHeight(int[] height, int from, int to) {
@@ -83,23 +106,30 @@ public class RainWater {
         RainWater rainWater = new RainWater();
         int[] height = { 0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1 };
         System.out.println("Test 1 - Expecting 6, Getting: " + rainWater.trap(height));
+        System.out.println("Test 1 result of TrapWithPointers: " + rainWater.trapWithPointers(height));
         rainWater = new RainWater();
         height = new int[] { 0, 1, 0, 3, 1, 0, 1, 2, 2, 1, 2, 1 };
         System.out.println("Test 2 - Expecting 6, Getting: " + rainWater.trap(height));
+        System.out.println("Test 2 result of TrapWithPointers: " + rainWater.trapWithPointers(height));
         rainWater = new RainWater();
         height = new int[] { 5, 5, 1, 7, 1, 1, 5, 2, 7, 6 };
         System.out.println("Test 3 - Expecting 23, Getting: " + rainWater.trap(height));
+        System.out.println("Test 3 result of TrapWithPointers: " + rainWater.trapWithPointers(height));
         height = new int[] { 4, 2, 0, 3, 2, 4, 3, 4 };
         rainWater = new RainWater();
         System.out.println("Test 4 - Expecting 10, Getting: " + rainWater.trap(height));
+        System.out.println("Test 4 result of TrapWithPointers: " + rainWater.trapWithPointers(height));
         height = new int[] { 4, 2, 0, 3, 2, 5 };
         rainWater = new RainWater();
         System.out.println("Test 5 - Expecting 9, Getting: " + rainWater.trap(height));
+        System.out.println("Test 5 result of TrapWithPointers: " + rainWater.trapWithPointers(height));
         height = new int[] { 2, 0, 2 };
         rainWater = new RainWater();
         System.out.println("Test 6 - Expecting 2, Getting: " + rainWater.trap(height));
+        System.out.println("Test 6 result of TrapWithPointers: " + rainWater.trapWithPointers(height));
         height = new int[] { 5, 4, 1, 2 };
         rainWater = new RainWater();
         System.out.println("Test 7 - Expecting 1, Getting: " + rainWater.trap(height));
+        System.out.println("Test 7 result of TrapWithPointers: " + rainWater.trapWithPointers(height));
     }
 }
