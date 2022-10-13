@@ -52,6 +52,7 @@ public class RainWater {
     }
 
     public int trapWithArrays(int[] height) {
+        // code from GoodTecher https://www.youtube.com/watch?v=wz00uI9mDXA
         int totalAmount = 0;
         if (height == null || height.length == 0)
             return totalAmount;
