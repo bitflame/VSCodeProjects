@@ -1,3 +1,5 @@
+import edu.princeton.cs.algs4.StdRandom;
+import edu.princeton.cs.algs4.Stopwatch;
 
 public class RainWater {
     public int trap(int[] height) {
@@ -123,40 +125,74 @@ public class RainWater {
     }
 
     public static void main(String[] args) {
+        int[] height = new int[10000000];
+        Stopwatch s = new Stopwatch();
+        for (int i = 0; i < 1000; i++) {
+            height[i] = StdRandom.uniform(0, 10);
+        }
         RainWater rainWater = new RainWater();
-        int[] height = { 0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1 };
-        System.out.println("Test 1 - Expecting 6, Getting: " + rainWater.trap(height));
-        System.out.println("Test 1 result of TrapWithPointers: " + rainWater.trapWithPointers(height));
-        System.out.println("Test 1 result of TrapWithArrays: " + rainWater.trapWithArrays(height));
-        rainWater = new RainWater();
-        height = new int[] { 0, 1, 0, 3, 1, 0, 1, 2, 2, 1, 2, 1 };
-        System.out.println("Test 2 - Expecting 6, Getting: " + rainWater.trap(height));
-        System.out.println("Test 2 result of TrapWithPointers: " + rainWater.trapWithPointers(height));
-        System.out.println("Test 2 result of TrapWithArrays: " + rainWater.trapWithArrays(height));
-        rainWater = new RainWater();
-        height = new int[] { 5, 5, 1, 7, 1, 1, 5, 2, 7, 6 };
-        System.out.println("Test 3 - Expecting 23, Getting: " + rainWater.trap(height));
-        System.out.println("Test 3 result of TrapWithPointers: " + rainWater.trapWithPointers(height));
-        System.out.println("Test 3 result of TrapWithArrays: " + rainWater.trapWithArrays(height));
-        height = new int[] { 4, 2, 0, 3, 2, 4, 3, 4 };
-        rainWater = new RainWater();
-        System.out.println("Test 4 - Expecting 10, Getting: " + rainWater.trap(height));
-        System.out.println("Test 4 result of TrapWithPointers: " + rainWater.trapWithPointers(height));
-        System.out.println("Test 4 result of TrapWithArrays: " + rainWater.trapWithArrays(height));
-        height = new int[] { 4, 2, 0, 3, 2, 5 };
-        rainWater = new RainWater();
-        System.out.println("Test 5 - Expecting 9, Getting: " + rainWater.trap(height));
-        System.out.println("Test 5 result of TrapWithPointers: " + rainWater.trapWithPointers(height));
-        System.out.println("Test 5 result of TrapWithArrays: " + rainWater.trapWithArrays(height));
-        height = new int[] { 2, 0, 2 };
-        rainWater = new RainWater();
-        System.out.println("Test 6 - Expecting 2, Getting: " + rainWater.trap(height));
-        System.out.println("Test 6 result of TrapWithPointers: " + rainWater.trapWithPointers(height));
-        System.out.println("Test 6 result of TrapWithArrays: " + rainWater.trapWithArrays(height));
-        height = new int[] { 5, 4, 1, 2 };
-        rainWater = new RainWater();
-        System.out.println("Test 7 - Expecting 1, Getting: " + rainWater.trap(height));
-        System.out.println("Test 7 result of TrapWithPointers: " + rainWater.trapWithPointers(height));
-        System.out.println("Test 7 result of TrapWithArrays: " + rainWater.trapWithArrays(height));
+        // int[] height = { 0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1 };
+        // System.out.println("Test 1 - Expecting 6, Getting: " +
+        // rainWater.trap(height));
+        rainWater.trap(height);
+        System.out.println("My code took to process an array of 10000000: " + s.elapsedTime());
+        s = new Stopwatch();
+        // System.out.println("Test 1 result of TrapWithPointers: " +
+        // rainWater.trapWithPointers(height));
+        rainWater.trapWithPointers(height);
+        System.out.println("The pointers method took to process an array of 10000000: " + s.elapsedTime());
+        s = new Stopwatch();
+        // System.out.println("Test 1 result of TrapWithArrays: " +
+        // rainWater.trapWithArrays(height));
+        rainWater.trapWithArrays(height);
+        System.out.println("The arrays method took to process an array of 10000000: " + s.elapsedTime());
+        // rainWater = new RainWater();
+        // height = new int[] { 0, 1, 0, 3, 1, 0, 1, 2, 2, 1, 2, 1 };
+        // System.out.println("Test 2 - Expecting 6, Getting: " +
+        // rainWater.trap(height));
+        // System.out.println("Test 2 result of TrapWithPointers: " +
+        // rainWater.trapWithPointers(height));
+        // System.out.println("Test 2 result of TrapWithArrays: " +
+        // rainWater.trapWithArrays(height));
+        // rainWater = new RainWater();
+        // height = new int[] { 5, 5, 1, 7, 1, 1, 5, 2, 7, 6 };
+        // System.out.println("Test 3 - Expecting 23, Getting: " +
+        // rainWater.trap(height));
+        // System.out.println("Test 3 result of TrapWithPointers: " +
+        // rainWater.trapWithPointers(height));
+        // System.out.println("Test 3 result of TrapWithArrays: " +
+        // rainWater.trapWithArrays(height));
+        // height = new int[] { 4, 2, 0, 3, 2, 4, 3, 4 };
+        // rainWater = new RainWater();
+        // System.out.println("Test 4 - Expecting 10, Getting: " +
+        // rainWater.trap(height));
+        // System.out.println("Test 4 result of TrapWithPointers: " +
+        // rainWater.trapWithPointers(height));
+        // System.out.println("Test 4 result of TrapWithArrays: " +
+        // rainWater.trapWithArrays(height));
+        // height = new int[] { 4, 2, 0, 3, 2, 5 };
+        // rainWater = new RainWater();
+        // System.out.println("Test 5 - Expecting 9, Getting: " +
+        // rainWater.trap(height));
+        // System.out.println("Test 5 result of TrapWithPointers: " +
+        // rainWater.trapWithPointers(height));
+        // System.out.println("Test 5 result of TrapWithArrays: " +
+        // rainWater.trapWithArrays(height));
+        // height = new int[] { 2, 0, 2 };
+        // rainWater = new RainWater();
+        // System.out.println("Test 6 - Expecting 2, Getting: " +
+        // rainWater.trap(height));
+        // System.out.println("Test 6 result of TrapWithPointers: " +
+        // rainWater.trapWithPointers(height));
+        // System.out.println("Test 6 result of TrapWithArrays: " +
+        // rainWater.trapWithArrays(height));
+        // height = new int[] { 5, 4, 1, 2 };
+        // rainWater = new RainWater();
+        // System.out.println("Test 7 - Expecting 1, Getting: " +
+        // rainWater.trap(height));
+        // System.out.println("Test 7 result of TrapWithPointers: " +
+        // rainWater.trapWithPointers(height));
+        // System.out.println("Test 7 result of TrapWithArrays: " +
+        // rainWater.trapWithArrays(height));
     }
 }
